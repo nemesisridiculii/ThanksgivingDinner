@@ -115,6 +115,7 @@ The kitchen cabinets.
    open = false;
    openable = true;
    fixed = true;
+   plural = true;
 };
 rooms.kitchen:placeIn(things.cabinets);
 addHidingContainer(things.cabinets);

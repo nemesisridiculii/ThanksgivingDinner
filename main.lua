@@ -1,6 +1,6 @@
 require "luaIf"
 
-maxturns = 70;
+maxturns = 50;
 
 dofile("rooms.lua");
 dofile("things.lua");
@@ -8,7 +8,9 @@ dofile("verbs.lua");
 
 math.randomseed(os.time());
 
+total = 10; --for the cookbook
 for k,v in pairs(items) do
+   total = total + v.points;
    if(#hidingContainers > 0 and #hidingSupporters > 0) then
       if(math.random() >= 0.5) then
 	 local i = math.random(#hidingContainers);
@@ -35,8 +37,13 @@ io.write([[
 It's thanksgiving day, the guests are on their way. You need to put
 the turkey in the oven, but where is all the food!?
 
-A game by Jeffrey Adair
+A scavenger hunt by Jeffrey Adair
 -----------------------
+
+You're going to need to search the house for the mising
+food, take it to the kitchen and cook it before the guests
+arrive.
+
 
 ]]);
 
@@ -79,5 +86,8 @@ else
 Your guests arrive to find your bloody corpse.
 ]]);
 end
+
+
+io.write("You scored ", luaIf.current.score, " pts. out of a possible ", total, ".\n");
 
 
